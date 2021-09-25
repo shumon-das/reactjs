@@ -38,7 +38,9 @@ function App() {
     <div className="container">
       <div className="app">
           <Header/>
-          <Tasks tasks={tasks} onDelete={deleteTask}/>
+          {tasks.length > 0 ? (<Tasks tasks={tasks} onDelete={deleteTask}/>)
+                            : (<h3>No Tasks</h3>)
+          }
       </div>
 
     </div>
