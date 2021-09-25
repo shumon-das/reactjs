@@ -11,3 +11,40 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+.container{
+  border: 1px solid black;
+  border-radius: 2px;
+}
+.app{
+  width: 1000px;
+  margin: auto;
+}
+.task{
+  width: 80%;
+  font-family: auto;
+  background-color: lightgray;
+  margin: 5px 10%;
+  padding: 5px;
+}
+.task > h3{
+  display: flex;
+  justify-content: space-between;
+  margin: 5px 10px;
+}
+.header{
+  display: flex;
+  justify-content: space-around;
+  margin: 20px;
+}
+.headerPage{
+  border: 1px solid black;
+  border-radius: 2px;
+}
+.header > button{
+  background: black;
+    color: white;
+    width: 100px;
+    height: 45px;
+}
