@@ -11,8 +11,8 @@ const Header = ({title}) => {
             <header className="header">
                 <h1>First Tasks {title}</h1>
                   <Button color="green" text="Add" onClick={onClickFunc}/>
-                  <Button color="blue" text="Remove"/>
-                  <Button color="red" text="Subcribe"/>
+                  <Button color="blue" text="Remove" onClick={onClickFunc}/>
+                  <Button color="red" text="Subcribe" onClick={onClickFunc}/>
             </header>
         </div>
     )
