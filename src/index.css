@@ -51,3 +51,13 @@ code {
 .reminder{
   border-left: 5px solid green;
 }
+.add-form{
+  width: 80%;
+  margin: auto;
+}
+.form-group{
+  margin: 15px 0px;
+}
+.form-check-input{
+  margin: 5px 10px
+}
