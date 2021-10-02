@@ -1,12 +1,13 @@
 import './App.css';
 import Header from './components/Header'
 import Tasks from './components/Tasks';
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import AddTask from './components/AddTask';
 
 
 function App() {
     const [showAddTask, setShowAddTask] = useState(false)
+
     const [tasks, setTasks] = useState([
         {
             id: 1,
@@ -28,6 +29,22 @@ function App() {
         },
         
     ])
+
+    useEffect(() => {
+      const getTasks = async () => {
+        const getTasksFromServer = await fetchTasks()
+        setTasks(getTasksFromServer)
+      }
+
+      getTasks()
+    }, [])
+
+    // get tasks from server
+    const fetchTasks = async () => {
+      const result = await fetch('https://jsonplaceholder.typicode.com/posts')
+      const data = await result.json()
+      return data
+    }
 
     // addTask
     const addTask = (task) => {

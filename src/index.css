@@ -33,6 +33,11 @@ code {
   justify-content: space-between;
   margin: 5px 10px;
 }
+.task > p{
+  margin-top: 0;
+  margin-bottom: 1rem;
+  padding: 10px;
+}
 .header{
   display: flex;
   justify-content: space-around;
@@ -41,6 +46,8 @@ code {
 .headerPage{
   border: 1px solid black;
   border-radius: 2px;
+  width: 80%;
+  margin: auto;
 }
 .header > button{
   background: black;
