@@ -55,8 +55,11 @@ function App() {
     }
 
     // delete specific task 
-    const deleteTask = (id) => {
-      console.log('delete', id);
+    const deleteTask = async (id) => {
+      await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`,{
+        method: 'DELETE',
+      })
+
       setTasks(tasks.filter(
         (task) => task.id !== id
       ))
