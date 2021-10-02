@@ -48,10 +48,26 @@ function App() {
 
     // addTask
     const addTask = (task) => {
-       const id = Math.floor(Math.random() * 1000) + 1
-       const newTask = { id, ...task }
-       setTasks([...tasks, newTask])
-       console.log(newTask)
+
+      fetch('https://jsonplaceholder.typicode.com/posts', {
+                      method: 'POST',
+                      headers: {
+                        'Content-type': 'application/json; charset=UTF-8',
+                      },
+                      body: JSON.stringify(task),
+                    })
+                    .then((response) => response.json())
+                    .then((data) => {
+                      setTasks([...tasks, data]) 
+                    }
+                    );
+            // const data = result.json()
+            // setTasks([...tasks, data])        
+
+      //  const id = Math.floor(Math.random() * 1000) + 1
+      //  const newTask = { id, ...task }
+      //  setTasks([...tasks, newTask])
+      //  console.log(newTask)
     }
 
     // delete specific task 

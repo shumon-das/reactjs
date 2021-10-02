@@ -1,34 +1,35 @@
 import { useState } from "react";
 
 const AddTask = ({ onAdd }) => {
-    const [text, setText] = useState('');
-    const [day, setDay] = useState('');
-    const [reminder, setReminder] = useState(false);
+    const [title, setTitle] = useState('');
+    const [body, setBody] = useState('');
+    const [reminder, setReminder] = useState(101);
 
     const onSubmit = (e) => {
         e.preventDefault()
         
-        if(!text){
+        if(!title){
             alert('Please add task')
             return
         }
 
-        onAdd({text, day, reminder})
+        // onAdd({text, day, reminder})
+        onAdd({title, body, reminder})
         
-        setText('')
-        setDay('')
+        setTitle('')
+        setBody('')
         setReminder(false)
 
     }
     return (
         <form className="add-form" onSubmit={onSubmit}>
             <div className="form-group">
-                <label>Task</label>
-                <input type="text" placeholder="Task Name"  className="form-control" value={text} onChange={(e) => setText(e.target.value)}></input>
+                <label>Title</label>
+                <input type="text" placeholder="add title"  className="form-control" value={title} onChange={(e) => setTitle(e.target.value)}></input>
             </div>
             <div className="form-group">
-                <label>Date & Time</label>
-                <input type="text" placeholder="Add Date & time" className="form-control" value={day} onChange={(e) => setDay(e.target.value)}></input>
+                <label>Body</label>
+                <input type="text" placeholder="add body" className="form-control" value={body} onChange={(e) => setBody(e.target.value)}></input>
             </div>
             <div className="form-group">
                 <label>Reminder</label>
