@@ -1,5 +1,8 @@
 import './App.css';
+import {BrowserRouter as Router, Route} from 'react-router-dom'
 import Header from './components/Header'
+import Footer from './components/Footer'
+import About from './components/About'
 import Tasks from './components/Tasks';
 import { useState, useEffect } from 'react'
 import AddTask from './components/AddTask';
@@ -7,28 +10,28 @@ import AddTask from './components/AddTask';
 
 function App() {
     const [showAddTask, setShowAddTask] = useState(false)
-
-    const [tasks, setTasks] = useState([
-        {
-            id: 1,
-            text: 'Doctor Appoinment',
-            day: 'Feb 6th at 1:30pm',
-            reminder: true,
-        },
-        {
-            id: 2,
-            text: 'Meeting at offic',
-            day: 'Feb 6th at 4:20pm',
-            reminder: false,
-        },
-        {
-            id: 3,
-            text: 'Docker Ship',
-            day: 'Feb 6th at 6:30pm',
-            reminder: true
-        },
-        
-    ])
+  //   var dumyData = [
+  //     {
+  //         id: 1,
+  //         text: 'Doctor Appoinment',
+  //         day: 'Feb 6th at 1:30pm',
+  //         reminder: true,
+  //     },
+  //     {
+  //         id: 2,
+  //         text: 'Meeting at offic',
+  //         day: 'Feb 6th at 4:20pm',
+  //         reminder: false,
+  //     },
+  //     {
+  //         id: 3,
+  //         text: 'Docker Ship',
+  //         day: 'Feb 6th at 6:30pm',
+  //         reminder: true
+  //     },
+      
+  // ]
+    const [tasks, setTasks] = useState([])
 
     useEffect(() => {
       const getTasks = async () => {
@@ -90,17 +93,25 @@ function App() {
     }
 
   return (
+    <Router>
     <div className="container">
       <div className="app">
           <Header onAdd={() => setShowAddTask(!showAddTask)} showAdd={showAddTask}/>
-          {showAddTask && <AddTask onAdd={addTask} />}
-          {tasks.length > 0 ? (<Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder}/>)
-                            : (<h3>No Tasks</h3>)
-          }
+         
       </div>
-
+      <Route path="/" exact render={()=>(
+        <>
+         {showAddTask && <AddTask onAdd={addTask} />}
+         {tasks.length > 0 ? (<Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder}/>)
+                           : (<h3>No Tasks</h3>)
+         }
+        </> 
+      )}/>
+      <Route path="/about" component={About}/>
+      <Footer />
     </div>
-  );
+    </Router>
+  )
 }
 
 export default App;
